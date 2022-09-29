@@ -3,7 +3,7 @@
 // based off of:
 // example midterm + in class programs + slides
 
-
+this is not finished yet
 
 // PROBABLY PRETTY IMPORTANT
 {
@@ -98,11 +98,49 @@
 		1. This // is a keyword
 		2. This // is a pointer
 		3. This // points to the object that a method is being invoked upon
-		
-		
+			
+}
+
+
+// EXAMPLE QUESTIONS
+{
+
+	From sample midterm:
+	
+		1. What are three components of an Abstract Data Type?
+			
+			// A: Data, Operations on the data, and rules of usage.
+			
+		2. Given the class below, write a member function that checks
+		   if two strings are equal. Give pre and post conditions.
+			   
+		class String {
+		public:
+			string () { s[0] = 0; };
+			bool operator==(const string&) const;
+		private:
+			char s[256];
+		};
 	
 		
+			// A:
+			/*
+			bool string::operator==(const string& rhs) const {
+				for(i = 0; i < 256-1; ++i) {
+					if(rhs.s[i] != s[i]) return false;
+				}
+				return true;
+			}
+			*/
+
+	
 }
+
+
+
+
+
+
 
 // PROBABLY NOT THAT IMPORTANT
 {
