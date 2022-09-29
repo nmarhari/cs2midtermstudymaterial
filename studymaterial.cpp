@@ -14,7 +14,7 @@ this is not finished yet
 		3. Rules of usage.			// set of usage rules (about how it behaves)
 	
 	
-	Examples of ADT's
+	Examples of ADTs
 	
 		1. Integers
 		2. Booleans
