@@ -5,7 +5,7 @@
 
 this is not finished yet
 
-// PROBABLY PRETTY IMPORTANT
+// PROBABLY PRETTY IMPORTANT -------------------------------------------------------------------
 {
 	Abstract data type has 3 things.
 	
@@ -146,7 +146,7 @@ this is not finished yet
 }
 
 
-// EXAMPLE QUESTIONS
+// EXAMPLE QUESTIONS ------------------------------------------------------------------------------
 {
 
 	From sample midterm:
@@ -166,18 +166,68 @@ this is not finished yet
 			char s[256];
 		};
 	
-		
 			// A:
 			/*
+			// REQUIRES: lhs and rhs need to be initialized ?
+			// ENSURES: RetVal == true if all elements in array are the same
+			// 	    RetVal == false if one or more elements in array differ
 			bool string::operator==(const string& rhs) const {
-				for(i = 0; i < 256-1; ++i) {
+				for(i = 0; i < 256; ++i) {
 					if(rhs.s[i] != s[i]) return false;
 				}
 				return true;
 			}
 			*/
-
+			
+		3. Overload operator>> for this string class above. You may assume that it is a friend function.
+		   Read in a string from a stream until a semicolon (;) is read. Blanks must be included in the string.
+		   You do not need to check for end of file.
+		   
+		   	// A:
+			/*
+			std::istream& operator>>(std::istream& in, string& rhs) {
+				in.get(ch);
+				int i = 0;
+				while(ch != ';') {
+					rhs.s[i] = ch;
+					++i;
+					in.get(ch);
+				}
+				return in;
+			}
+			*/       not sure if this is correct ^^
 	
+			// additionally, declaration in hpp file would look like:
+			// friend std::istream& operator>>(std::istream&, string&);
+			
+		4. Overload operator<< for bigint class in project 1. You can assume it is a friend function.
+		   Max output is 60 digits per line. Assume constant value called BIGINT_CAPACITY
+		   
+		   	// A:
+			/*
+			std::ostream& operator<<(std::ostream& out, const bigint& rhs) {
+				int nonZero = 0;
+				for(int i = BIGINT_CAPACITY-1; i > 0; --i) {
+					if (rhs.x[i] != 0) { nonZero = i; break; }
+				}
+				
+				int length;
+				for (int j = nonZero; j >= 0; --j) {
+					out << rhs.x[j];
+					++length;
+					if (length == 60) { std::cout << "\n"; length = 0; }
+				}
+				return out;
+			}
+			*/
+			
+	/*	5. Write a template class for ADT array. You must use a dynamic array. You must implement
+			- Constructor with specific capacity provided
+			- destructor
+			- copy constructor
+			
+			// I do not think this was covered yet.
+	*/		
 }
 
 
@@ -186,7 +236,7 @@ this is not finished yet
 
 
 
-// PROBABLY NOT THAT IMPORTANT
+// PROBABLY NOT THAT IMPORTANT -------------------------------------------------------------------
 {
 	
 	Subtle things to remember
