@@ -139,9 +139,9 @@ this is not finished yet
 			// this ^^^^ does the same thing as the &ref example.
 			
 
-	Dynamic Array Allocation
+	//Dynamic Array Allocation
 		
-		1. ......
+		//1. not on midterm
 
 }
 
