@@ -232,8 +232,135 @@ this is not finished yet
 
 
 
+// COMBINED REVIEW -------------------------------------------------------------------------------
 
-
+	What are the three main components of an Abstract Data Type (ADT) ?
+		
+		1. Data				// some memory
+		2. Operations on that data	// set of methods/functions that work on the data
+		3. Rules of usage		// set of usage rules for the adt to function properly
+		
+	Pointers
+	
+		1. Variable that holds a memory address
+		2. What is the output of this code?
+		
+			/* void foo(int *x) { *x = 20; }
+			   int main() {
+			   	int a = 10;
+				foo(&a);
+			   }
+			*/
+			Before foo is called, a is 10. After foo is called, a is 20.
+			I think what is happening here is pointer x holds the memory address of 
+			a because it is passed a by reference... (int *x = &a) then in the function
+			it says "set what x points to, to 20."
+		
+	Bigint
+	
+		1. Recreate the default constructor for the bigint adt.
+			
+			/*
+			bigint::bigint() {
+				for(int i = 0; i < CAPACITY; ++i) {
+					x[i] = 0;
+				}
+			}
+			*/
+			
+		2. Recreate the const char[] constructor for the bigint adt.
+			
+			/*
+			bigint::bigint(const char rhs[]) : bigint() { 	// can do this ( : bigint() ) or 
+								      	// same for loop from before
+				int length = 0;
+				while(rhs[length] != 0) { ++length; } 		// finds length of char[]
+				
+				int xIndex = 0;
+				int digit = 0;
+				for(int i = length-1; i >=0; --i) {
+					digit = int(rhs[i]) - int('0'); 	// turns char into int
+					x[xIndex] = digit;
+					++xIndex;
+				}
+					
+			}
+			*/ // The xIndex and i need to be inversed because you need to take last digit in first
+			
+		3. Recreate the addition overload operator for the bigint adt.
+			
+			/*
+			bigint bigint::operator+(const bigint& rhs) const {
+				bigint result;
+				int carry = 0;
+				for(int i = 0; i < CAPACITY; ++i) {
+					if ((rhs.x[i] + x[i] + carry) >= 10) {
+						result.x[i] = (rhs.x[i] + x[i] + carry) - 10;
+						carry = 1;
+					}
+					else {
+						result.x[i] = rhs.x[i] + x[i] + carry;
+						carry = 0;
+					}
+				}
+				return result;
+			}
+			*/
+			
+		4. Create pre and post conditions for the addition operator above.
+			
+			// REQUIRES: 	lhs and/or rhs is positive and the sum is less than or equal to CAPACITY in length
+			// ENSURES: 	RetVal == a bigint result where result is the sum of lhs and rhs
+			
+	String ADT
+	
+		1. Recreate default constructor for the string class
+			
+			/*
+			string::string() {
+				s[0] = 0;
+			}
+			*/
+			
+		2. Recreate the concatenation operator for the string class ( + )
+			
+			/*
+			string string::operator+(const string& rhs) {
+				string result(str); // result is currently copy of lhs (string is char str[] under the hood)
+				int offset = length();	// length of *this
+				int i = 0;
+				
+				while(rhs.str[i] != 0) {
+					result.str[offset+1] = rhs.str[i];
+					++i;
+				}
+				result.str[offset+i] = 0;
+				return result;
+			}
+			
+			// ----------- OR ------------------------------------
+			
+			string& string::operator+=(const string& rhs) {
+				int offset = length();
+				int len = rhs.length();
+				int i;
+				
+				for(i = 0; i < offset; ++i) {
+					if (offset + i >= capacity()) break;
+					str[offset + i] = rhs[i];
+				}
+				str[offset + i] = 0;
+				return *this; 		// return modified lhs
+			}
+			
+			*/
+		
+		3. Give pre and post conditions for the concatenation 
+		
+			// REQUIRES:	lhs.length() + rhs.length() <= lhs.capacity() || rhs.capacity()
+			// ENSURES:	RetVal = "lhsrhs" (if lhs = "lhs" and rhs = "rhs")
+			
+		
 
 
 // PROBABLY NOT THAT IMPORTANT -------------------------------------------------------------------
