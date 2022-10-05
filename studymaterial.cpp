@@ -140,7 +140,18 @@
 	//Dynamic Array Allocation
 		
 		//1. not on midterm
-
+	
+	
+	Delegation
+		
+		1. You can use constructor delegation like so:
+	
+			// bigint::bigint(const char rhs[]) : bigint() { ... }
+							//  ^^^^^^^^^^ 
+		Here, you utilize the default constructor in a different constructor
+		(in this case the char constructor) to initialize all values to 0 before
+		filling in some elements with the char constructor.
+	
 }
 
 
@@ -184,6 +195,7 @@
 		   	// A:
 			/*
 			std::istream& operator>>(std::istream& in, string& rhs) {
+				char ch;
 				in.get(ch);
 				int i = 0;
 				while(ch != ';') {
