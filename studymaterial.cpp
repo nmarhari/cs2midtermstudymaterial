@@ -3,9 +3,7 @@
 // based off of:
 // example midterm + in class programs + slides
 
-this is not finished yet
-
-// PROBABLY PRETTY IMPORTANT -------------------------------------------------------------------
+// INITIAL REVIEW -------------------------------------------------------------------
 {
 	Abstract data type has 3 things.
 	
@@ -146,7 +144,7 @@ this is not finished yet
 }
 
 
-// EXAMPLE QUESTIONS ------------------------------------------------------------------------------
+// EXAMPLE QUESTIONS FROM svn/SHARED ------------------------------------------------------------------------------
 {
 
 	From sample midterm:
@@ -232,7 +230,7 @@ this is not finished yet
 
 
 
-// COMBINED REVIEW -------------------------------------------------------------------------------
+// FURTHER REVIEW -------------------------------------------------------------------------------
 
 	What are the three main components of an Abstract Data Type (ADT) ?
 		
