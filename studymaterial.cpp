@@ -76,7 +76,7 @@
 			// const methods can NOT modify object it is being called upon
 			// in this case it is being called upon a so a will not be modified.
 		5. You can return a reference in a function/method.
-			// ex: string& string::operator+=(const string& rhs) {...}
+			// ex: String& String::operator+=(const String& rhs) {...}
 				//  ^^^ 
 			// you can not return local variables by reference
 			// you can not return pointers to local variables
@@ -169,8 +169,8 @@
 			   
 		class String {
 		public:
-			string () { s[0] = 0; };
-			bool operator==(const string&) const;
+			String () { s[0] = 0; };
+			bool operator==(const String&) const;
 		private:
 			char s[256];
 		};
@@ -180,7 +180,7 @@
 			// REQUIRES: lhs and rhs need to be initialized ?
 			// ENSURES: RetVal == true if all elements in array are the same
 			// 	    RetVal == false if one or more elements in array differ
-			bool string::operator==(const string& rhs) const {
+			bool String::operator==(const String& rhs) const {
 				for(i = 0; i < 256; ++i) {
 					if(rhs.s[i] != s[i]) return false;
 				}
@@ -194,7 +194,7 @@
 		   
 		   	// A:
 			/*
-			std::istream& operator>>(std::istream& in, string& rhs) {
+			std::istream& operator>>(std::istream& in, String& rhs) {
 				char ch;
 				in.get(ch);
 				int i = 0;
@@ -208,7 +208,7 @@
 			*/       not sure if this is correct ^^
 	
 			// additionally, declaration in hpp file would look like:
-			// friend std::istream& operator>>(std::istream&, string&);
+			// friend std::istream& operator>>(std::istream&, String&);
 			
 		4. Overload operator<< for bigint class in project 1. You can assume it is a friend function.
 		   Max output is 60 digits per line. Assume constant value called BIGINT_CAPACITY
@@ -327,16 +327,16 @@
 		1. Recreate default constructor for the string class
 			
 			/*
-			string::string() {
-				s[0] = 0;
+			String::String() {
+				str[0] = 0;
 			}
 			*/
 			
 		2. Recreate the concatenation operator for the string class ( + )
 			
 			/*
-			string string::operator+(const string& rhs) {
-				string result(str); // result is currently copy of lhs (string is char str[] under the hood)
+			String String::operator+(const String& rhs) const {
+				String result(str); // result is currently copy of lhs (String is char str[] under the hood)
 				int offset = length();	// length of *this
 				int i = 0;
 				
@@ -350,12 +350,12 @@
 			
 			// ----------- OR ------------------------------------
 			
-			string& string::operator+=(const string& rhs) {
+			String& String::operator+=(const String& rhs) {
 				int offset = length();
-				int len = rhs.length();
+				len = rhs.length();
 				int i;
 				
-				for(i = 0; i < offset; ++i) {
+				for(i = 0; i < len; ++i) {
 					if (offset + i >= capacity()) break;
 					str[offset + i] = rhs[i];
 				}
