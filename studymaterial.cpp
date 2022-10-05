@@ -329,7 +329,7 @@
 				int i = 0;
 				
 				while(rhs.str[i] != 0) {
-					result.str[offset+1] = rhs.str[i];
+					result.str[offset+i] = rhs.str[i];
 					++i;
 				}
 				result.str[offset+i] = 0;
